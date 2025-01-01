@@ -1,0 +1,35 @@
+.navbar{
+    background-color: black;
+}
+  nav {
+    display: flex;
+    border: 1px solid white;
+    align-items: center;
+    padding: 8px 24px;
+    font-size: 1.2em;
+    position: sticky;
+    top: 0;
+  }
+ 
+  ul {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+    gap: 40px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  li {
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.8s ease;
+  }
+  
+  li:hover {
+    transform: scale(1.1);
+    border-color: white;
+  }
+  
