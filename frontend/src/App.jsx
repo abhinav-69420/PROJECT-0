@@ -11,7 +11,7 @@ import Cart from './pages/buyer/Cart'
 
 //hhhhhhh
 function App() {
-  
+  //comment
 
   return (
     <>
