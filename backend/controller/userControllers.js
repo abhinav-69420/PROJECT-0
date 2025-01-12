@@ -55,7 +55,7 @@ async function signup(req, res) {
 const loginUser = async (req, res) => {
     try {
       const { usernameOremail, password } = req.body;
-      console.log(usernameOremail);
+      console.log(req.body);
       
   
       const user = await Users.findOne({
@@ -63,12 +63,12 @@ const loginUser = async (req, res) => {
       });
   
       if (!user) {
-        return res.status(401).json({ message: 'Invalid credentials' });
+        return res.status(401).json({ message: 'Invalid credentials for username' });
       }
   
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
-        return res.status(401).json({ message: 'Invalid credentials' });
+        return res.status(401).json({ message: 'Invalid credentials for password' });
       }
   
       // Generate JWT (implement your own JWT strategy or use a library)

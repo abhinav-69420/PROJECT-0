@@ -1,4 +1,5 @@
 import React from "react";
+import '../components/Navbar.css'
 
 function Navbarseller() {
   return (
@@ -25,10 +26,10 @@ function Navbarseller() {
               <a href="/addproduct">Add Products</a>
             </li>
             <li>
-              <a href="/viewproduct">View Products</a>
+              <a href="/getproductforseller">View Products</a>
             </li>
             <li >
-              <a href="#" className="text-yellow-600">Login</a>
+              <a href="/login" className="text-yellow-600">Login</a>
             </li>
 
             <li>

@@ -1,0 +1,85 @@
+/* Container for the product list */
+.product-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Table styling */
+  .product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table header styling */
+  .product-table th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  /* Table row styling */
+  .product-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Alternate row background color */
+  .product-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Hover effect on rows */
+  .product-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Product image styling */
+  .product-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  .button-container {
+    display: flex;
+    gap: 20px; /* Adds space between the buttons */
+    justify-content: center; /* Centers the buttons horizontally */
+
+  }
+
+  
+  .approve-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    height: 25px;
+  }
+  
+  .reject-button {
+    background-color: #f44336; /* Red */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    height: 25px;
+    width: 70px;
+  }
+  
+  .approve-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .reject-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }
