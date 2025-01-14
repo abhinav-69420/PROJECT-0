@@ -1,21 +1,16 @@
 const mongoose = require("mongoose");
-const userSchema = new mongoose.Schema({
+const buyerSchema = new mongoose.Schema({
   // userId: {
   //     type:String,
   //     required: true,
   //     unique: true
   // },
 //create a new model for admin and normal users cause dont need this much info on them
-  role: {
-    type: String,
-    required: true,
-    enum: ["admin", "seller", "buyer"],
-    default: "buyer",
-  },
   username: {
     type: String,
     required: true,
     trim: true,
+    unique: true
   },
   email: {
     type: String,
@@ -69,6 +64,6 @@ const userSchema = new mongoose.Schema({
     type: Date,
   },
 });
-const Users = mongoose.model("Users", userSchema);
+const Buyers = mongoose.model("Buyers", buyerSchema);
 
-module.exports = Users;
+module.exports = Buyers;

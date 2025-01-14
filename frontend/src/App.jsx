@@ -17,13 +17,13 @@ function App() {
     <>
     <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/signup" element={<Signup/>} />
+    <Route path="/signupseller" element={<Signup/>} />
     <Route path="/login" element={<Login/>}/>
     <Route path='/addproduct' element={<Addproduct/>} />
     <Route path='/getproductforseller' element={<Viewproduct/>} />
     <Route path='/navbaradmin' element={<Navbaradmin/>} />
     <Route path='/getproductforadmin' element={<Viewproducts/>} />
-    <Route path='cart' element={<Cart/>}/>
+    <Route path='/cart' element={<Cart/>}/>
 
     </Routes>
     </>

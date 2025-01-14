@@ -55,7 +55,7 @@ function Home() {
 
       if (response.status === 200) {
         console.log('Product added to cart successfully');
-        fetchCartItems(); // Refresh the cart items after adding
+        //fetchCartItems(); // Refresh the cart items after adding
       } else {
         console.error('Error adding product to cart:', response.data);
       }

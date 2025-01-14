@@ -19,10 +19,10 @@ function Navbar() {
         </div>
         <ul>
           <li>
-            <a href="#">Cart</a>
+            <a href="/cart">Cart</a>
           </li>
           <li>
-            <a href="#">Products</a>
+            <a href="/">Products</a>
           </li>
           <li>
             <a href="#">Login</a>

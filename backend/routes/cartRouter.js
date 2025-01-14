@@ -7,7 +7,7 @@ const authMiddleware = require('../middleware/userAuth'); // Middleware for auth
 
 cartRouter.post('/addtocart',authMiddleware, cartController.addToCart);
 cartRouter.delete('/removefromcart',authMiddleware, cartController.removeFromCart);
-cartRouter.get('/getcart',authMiddleware, cartController.getCart); // Using '/' for simplicity
-cartRouter.get('/quantityminus',authMiddleware, cartController.decreaseCartItem); // Using '/' for simplicity
+cartRouter.get('/getcart',authMiddleware, cartController.getCart);
+cartRouter.put('/updatequantity',authMiddleware, cartController.updateCartItem);
 
 module.exports = cartRouter;

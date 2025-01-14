@@ -19,10 +19,11 @@
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
-    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+
   }
   
   .cart-header {
@@ -36,19 +37,18 @@
   }
   
   .cart-table {
-    width: 100%;
+    width: 70%;
     border-collapse: collapse;
-    border: #000000;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-left: 50px;
+    margin-top: 30px;
   }
   
   .cart-table th,
   .cart-table td {
     padding: 10px;
     text-align: left;
-  }
-  
-  .cart-table th {
-    background-color: #f0f0f0;
   }
   
   .cart-table td {
@@ -88,4 +88,34 @@
     margin-top: 20px;
     font-size: 18px;
     color: #666;
+  }
+  h1{
+    font-size: 20px;
+    color: #1f1f1f;
+  }
+  tr{
+    width: auto;
+  }
+  .full_body{
+    display: flex;
+  }
+  .pera_dis{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin-left: 10px;
+    background: rgb(255,255,255);
+    background: linear-gradient(179deg, rgb(233, 246, 249) 0%, rgb(243, 250, 255) 69%, rgb(232, 238, 242) 95%);
+    height: 250px;
+    margin-top: 30px;
+    width: 400px;
+  }
+  .pera_dis h1{
+    font-size: 18px;
+    margin-left: 30px;
+    margin-top: 40px;
+  }
+  .pera_dis p{
+    font-size: 12px;
+    margin-left: 30px;
+
   }
