@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Buyers = require("../models/buyerModels");
-
+// eeeeeeeeeeeeeeee
 async function signupbuyer(req, res) {
   try {
     const {
