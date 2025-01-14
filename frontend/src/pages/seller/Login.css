@@ -1,7 +1,5 @@
-
-  
-  /* Whole background container */
-  .container {
+/* Whole background container */
+.containers {
     background: radial-gradient(
       circle,
       rgba(209, 213, 227, 0.6278886554621849) 0%,
@@ -36,7 +34,7 @@
   }
   
   /* Login form field container */
-  .login-form-fields {
+  .login-form-field {
     background: linear-gradient(
       90deg,
       rgba(110, 223, 155, 0.4430147058823529) 0%,
@@ -54,7 +52,7 @@
   }
   
   /* All input */
-  .login-input-group {
+  .login-input-groupnew {
     z-index: -1;
     position: absolute;
     width: 350px;
@@ -104,7 +102,7 @@
     font-size: 0.9rem;
   }
   
-  .name-password-login-button {
+  .name-password-login-buttonnew {
     margin-top: 10%;
   }
   
@@ -179,4 +177,3 @@
   .sign-up a:hover {
     background-color: rgba(0, 162, 255, 0.5);
   }
-  

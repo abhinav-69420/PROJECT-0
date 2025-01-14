@@ -45,4 +45,41 @@
     border-radius: 5px;
     object-fit: cover;
   }
+  .button-container {
+    display: flex;
+    gap: 20px; /* Adds space between the buttons */
+    justify-content: center; /* Centers the buttons horizontally */
+
+  }
+
   
+  .approve-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    height: 25px;
+  }
+  
+  .reject-button {
+    background-color: #f44336; /* Red */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    height: 25px;
+    width: 70px;
+  }
+  
+  .approve-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .reject-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }

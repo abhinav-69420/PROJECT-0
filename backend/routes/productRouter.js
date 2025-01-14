@@ -5,7 +5,8 @@ const {createProduct,
     getProducts, 
     getProductForApproval,
     getProductsforseller,
-    approveProduct} = require('../controller/productCrontroller')
+    approveProduct,
+    upadateProductprice} = require('../controller/productCrontroller')
 const upload = require('../middleware/uploadImage')
 
 
@@ -13,8 +14,7 @@ productRouter.post('/addproduct',Auth,upload.array("images",2),createProduct)
 productRouter.get('/getproduct',getProducts)
 productRouter.get('/getproductapproval',getProductForApproval)
 productRouter.get('/getproductforseller',Auth,getProductsforseller)
-productRouter.post('/approveproduct',Auth,approveProduct)
-
-
+productRouter.post('/approveproduct',approveProduct)
+productRouter.post('/updateproductprice',upadateProductprice)
 
 module.exports=productRouter;

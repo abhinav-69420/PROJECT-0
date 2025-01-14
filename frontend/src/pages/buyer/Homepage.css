@@ -1,0 +1,71 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+a {
+    text-decoration: none;
+}
+
+.maincart {
+    margin-top: 50px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container {
+width: 300px;
+height: 400px;
+margin-left: 3px;
+box-shadow: 0 14px 28px rgba(163, 163, 163, 0.2), 0 10px 10px rgba(255, 255, 255, 0.2);
+}
+.container:hover{
+   box-shadow:0 3px 3px rgb(190, 190, 190),0 3px 3px rgb(155, 155, 155);
+   transform: translateY(-3px);
+}
+
+img {
+    width: 230px;
+    height: 250px;
+    text-align: center;
+    margin: 0 auto;
+}
+h3{
+    padding-right: 180px;
+    font-size: 13px;
+    color: rgb(126, 124, 124);
+    font-family: Inter, -apple-system, Helvetica, Arial, sans-serif;
+}
+.mainpart {
+    width: 100%;
+    height: auto;
+    min-height: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center text within the h1 and p */
+}
+h4{
+    font-size: 13px;
+    font-family:Inter, -apple-system, Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    margin-left: -180px;
+    margin-top: -10px;
+}
+h6{
+    font-size: 20px;
+    margin-top: -10px;
+    margin-left: 40px;
+    gap: 10px;
+    display: flex;
+}
+.maincart .container .btn-primary {
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+  }
