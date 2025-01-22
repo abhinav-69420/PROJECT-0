@@ -66,6 +66,8 @@ const getCart = asyncHandler(async (req, res) => {
       path: 'cartItems.productId',
       select: 'name adminPrice images', // Include all necessary fields
     });
+    console.log(cart);
+    
 
     if (!cart) {
       return res.status(404).json({ message: 'Cart not found' });
