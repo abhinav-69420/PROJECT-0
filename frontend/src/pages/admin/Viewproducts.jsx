@@ -19,7 +19,7 @@ function Viewproducts() {
           return;
         }
 
-        const response = await axios.get('http://localhost:3000/product/getproductforseller', {
+        const response = await axios.get('http://localhost:3000/product/getproductapproval', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

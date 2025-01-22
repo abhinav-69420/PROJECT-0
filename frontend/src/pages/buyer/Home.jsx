@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import axios from 'axios';
 import './Homepage.css'
+import placeholderImage from '../../assets/image.png'
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -72,7 +73,7 @@ function Home() {
         <div className="maincart">
           {products.map((product) => (
             <div key={product._id} className="container">
-              <img src={`http://localhost:3000/uploads/${product?.images}`} alt={product.name} />
+              <img src={product?.images ? `http://localhost:3000/uploads/${product.images}` : placeholderImage} alt="Product" />
               <h3>{product.name}</h3>
               {/* <h4>{product.description}</h4> */}
               <h6>₹{(product.adminPrice ?? product.sellerPrice).toFixed(2)}</h6>
@@ -87,4 +88,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;

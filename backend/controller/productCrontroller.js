@@ -35,7 +35,7 @@ const createProduct = async (req, res) => {
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find({ isApproved: true }).populate('sellerId', 'username'); 
-    // console.log(products);
+    //console.log(products);
     
     res.status(200).json(products);
   } catch (error) {
