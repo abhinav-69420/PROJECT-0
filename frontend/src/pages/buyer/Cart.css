@@ -1,121 +1,47 @@
-/* Global Styles */
+.cart-container h1{
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: rgb(75, 75, 75);
+}
+.cart-item{
+  display: flex;
+  border: 1px solid #d8d6d6;
+  width: 800px;
+  margin-left: 150px;
 
-/* * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #ffffff;
-  } */
-  
-  /* Cart Component Styles */
-  
-  .cart-containers {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-
-  }
-  
-  .cart-header {
-    margin-bottom: 20px;
-  }
-  
-  .cart-header h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .cart-table {
-    width: 70%;
-    border-collapse: collapse;
-    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    margin-left: 50px;
-    margin-top: 30px;
-  }
-  
-  .cart-table th,
-  .cart-table td {
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .cart-table td {
-    vertical-align: middle;
-  }
-  
-  .cart-table td input[type="number"] {
-    width: 50px;
-    height: 30px;
-    padding: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .cart-table td button {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .cart-table td button:hover {
-    background-color: #3e8e41;
-  }
-  
-  .cart-total {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  /* Empty Cart Styles */
-  
-  .empty-cart {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 18px;
-    color: #666;
-  }
-  h1{
-    font-size: 20px;
-    color: #1f1f1f;
-  }
-  tr{
-    width: auto;
-  }
-  .full_body{
-    display: flex;
-  }
-  .pera_dis{
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    margin-left: 10px;
-    background: rgb(255,255,255);
-    background: linear-gradient(179deg, rgb(233, 246, 249) 0%, rgb(243, 250, 255) 69%, rgb(232, 238, 242) 95%);
-    height: 250px;
-    margin-top: 30px;
-    width: 400px;
-  }
-  .pera_dis h1{
-    font-size: 18px;
-    margin-left: 30px;
-    margin-top: 40px;
-  }
-  .pera_dis p{
-    font-size: 12px;
-    margin-left: 30px;
-
-  }
+}
+.cart-body{
+  display: flex; 
+}
+.cart-summary{
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  margin-left: 30px;
+  width: 400px;
+  height: 300px;
+}
+.cart-summary h2{
+  font-size: 1rem;
+  color: rgb(190, 191, 192);
+  margin-left: 20px;
+}
+.cart-summary hr{
+  border: 0.3px solid rgb(212, 213, 214);
+}
+.summary-details{
+  font-size: 15px;
+  margin-left: 25px;
+  line-height: 30px;
+}
+.remove-button{
+  background-color: white;
+  color: black;
+  border: 0px solid #b8b9b9;
+  margin-left: 500px;
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+.quantity-control button{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 1px solid #e9e5e5;
+}
