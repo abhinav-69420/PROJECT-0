@@ -8,13 +8,7 @@
 /* Body Styling */
 body {
   font-family: Arial, sans-serif;
-  background: radial-gradient(
-      circle,
-      rgba(35, 75, 220, 0.628) 0%,
-      rgba(119, 221, 129, 0.521) 100%
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+  background-color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;

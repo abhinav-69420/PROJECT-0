@@ -1,8 +1,9 @@
 .navbar {
   background-color: rgb(245, 245, 245);
-  width: 100%; /* Make the navbar responsive */
+  width: auto; /* Make the navbar responsive */
   position: fixed; /* Fix the navbar at the top */
   top: 0; /* Ensure it sticks to the top */
+  left: 0;
   z-index: 1000; /* Ensure it stays above other content */
 }
 
@@ -15,11 +16,14 @@ nav {
   position: sticky;
   top: 0;
 }
+li{
+  margin-left: auto;
+}
 
 ul {
   list-style-type: none;
   display: flex;
-  margin-left: auto;
+  margin-left: 520px;
   gap: 40px;
   margin-right: 100px;
 }
@@ -30,7 +34,7 @@ a {
 }
 
 li a {
-  font-size: 12px;
+  font-size: 18px;
 }
 
 li {

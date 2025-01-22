@@ -1,0 +1,114 @@
+/* Container styles */
+.buyerlg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+
+/* Login form styles */
+.buyerlg-login-form {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+}
+.buyerlg-login-form:hover {
+  background: #f2f2f2; /* Light gray background on hover */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+}
+
+.buyerlg-login-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input group */
+.buyerlg-login-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input field styles */
+.buyerlg-name input,
+.buyerlg-password input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.buyerlg-name input:focus,
+.buyerlg-password input:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+}
+
+/* Login button */
+.buyerlg-login-btn button {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background: #6a11cb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buyerlg-login-btn button:hover {
+  background: #4a0fcb;
+}
+
+/* Links (Forget Password and Sign Up) */
+.buyerlg-forget-password-sign-up-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.buyerlg-forget-password a,
+.buyerlg-sign-up a {
+  color: #6a11cb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.buyerlg-forget-password a:hover,
+.buyerlg-sign-up a:hover {
+  color: #4a0fcb;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .buyerlg-login-form {
+    padding: 30px 20px;
+  }
+
+  .buyerlg-login-btn button {
+    font-size: 14px;
+  }
+  .buyerlg-message p{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .buyerlg-forget-password-sign-up-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Login.css'
+import './SellerLogin.css'
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
@@ -42,15 +42,15 @@ function Login() {
 
   return (
     <>
-    <div className="containers">
-     <div className="login-forms">
-       <div className="login-form-field">
-         <div className="login-input-groupnew">
-           <div className="name-password-login-buttonnew">
+    <div className="seller-containers">
+     <div className="seller-login-forms">
+       <div className="seller-login-form-field">
+         <div className="seller-login-input-groupnew">
+           <div className="seller-name-password-login-buttonnew">
              {/* User Icon */}
              <form onSubmit={handlesubmit}>
                {/* Name Field */}
-               <div className="name">
+               <div className="seller-name">
                
                  <input
                    type="text"
@@ -62,7 +62,7 @@ function Login() {
                  />
                </div>
                {/* Password Field */}
-               <div className="password">
+               <div className="seller-password">
    
                  <input
                    type="password"
@@ -74,16 +74,18 @@ function Login() {
                  />
                </div>
                {/* Login Button Field */}
-               <div className="login-btn">
+               <div className="seller-login-btn">
                  <button type="submit">Log In</button>
                </div>
              </form>  
+             {message && <p className='seller-message'>{message}</p>}
+
              {/* Forget Password and Sign Up Field */}
-             <div className="forget-password-sign-up-container">
+             <div className="seller-forget-password-sign-up-container">
                <div className="forget-password">
                  <a href="#">Forget Password?</a>
                </div>
-               <div className="sign-up">
+               <div className="seller-sign-up">
                  <a href="#">Sign Up</a>
                </div>
              </div>

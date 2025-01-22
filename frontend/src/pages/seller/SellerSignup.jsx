@@ -27,7 +27,7 @@ function Signup() {
       const response = await axios.post("http://localhost:3000/seller/signupseller", formData);
       setMessage(response.data.message);
       alert(response.data.message);
-      navigate("/login");
+      navigate("/loginseller");
     } catch (error) {
       setMessage(error.response?.data?.message || "Something went wrong");
     }

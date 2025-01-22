@@ -1,7 +1,9 @@
 import {Routes,Route} from 'react-router-dom'
-import Navbarseller from './components/Navbarseller'
-import Signup from './pages/seller/Signup'
-import Login from './pages/seller/Login'
+// import Navbarseller from './components/Navbarseller'
+import Signupseller from './pages/seller/SellerSignup'
+import Signupbuyer from './pages/buyer/SignupBuyer'
+import Loginseller from './pages/seller/SellerLogin'
+import Loginbuyer from './pages/buyer/Loginbuyer'
 import Addproduct from './pages/seller/Addproduct'
 import Viewproduct from './pages/seller/Viewproduct'
 import Navbaradmin from './components/Navbaradmin'
@@ -17,8 +19,10 @@ function App() {
     <>
     <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/signupseller" element={<Signup/>} />
-    <Route path="/login" element={<Login/>}/>
+    <Route path="/signupseller" element={<Signupseller/>} />
+    <Route path="/signupbuyer" element={<Signupbuyer/>} />
+    <Route path="/loginseller" element={<Loginseller/>}/>
+    <Route path="/loginbuyer" element={<Loginbuyer/>}/>
     <Route path='/addproduct' element={<Addproduct/>} />
     <Route path='/getproductforseller' element={<Viewproduct/>} />
     <Route path='/navbaradmin' element={<Navbaradmin/>} />
