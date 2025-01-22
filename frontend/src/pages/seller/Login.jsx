@@ -12,7 +12,7 @@ function Login() {
   const handlesubmit = async(e) =>{
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/loginseller', {
+      const response = await fetch('http://localhost:3000/seller/loginseller', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
