@@ -1,5 +1,5 @@
 /* Whole background container */
-.containers {
+/* .containers {
     background: radial-gradient(
       circle,
       rgba(209, 213, 227, 0.6278886554621849) 0%,
@@ -12,10 +12,10 @@
     width: 100%;
     height: 100vh;
     position: relative;
-  }
+  } */
   
   /* User Icon */
-  .user-icon {
+  /* .user-icon {
     color: white;
     position: absolute;
     font-size: 40px;
@@ -31,10 +31,10 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0px 0px 15px 5px rgba(167, 155, 155, 0.7);
-  }
+  } */
   
   /* Login form field container */
-  .login-form-field {
+  /* .login-form-field {
     background: linear-gradient(
       90deg,
       rgba(110, 223, 155, 0.4430147058823529) 0%,
@@ -49,10 +49,10 @@
     transform: translate(-50%, -50%);
     box-shadow: 0px 0px 20px 2px rgba(247, 242, 242, 0.877),
       0px 0px 1px 0px rgba(238, 233, 233, 0.897);
-  }
+  } */
   
   /* All input */
-  .login-input-groupnew {
+  /* .login-input-groupnew {
     z-index: -1;
     position: absolute;
     width: 350px;
@@ -61,10 +61,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
-  }
+  } */
   
   /* Name and password */
-  .name,
+  /* .name,
   .password {
     width: 300px;
     margin: 25px auto;
@@ -83,9 +83,9 @@
     padding: 11px 11px;
     border-radius: 5px 0px 0px 5px;
     background-color: rgb(236, 228, 228);
-  }
+  } */
   
-  .name input,
+  /* .name input,
   .password input {
     border: none;
     padding-left: 22px;
@@ -95,19 +95,19 @@
   .password input:focus {
     border: none;
     outline: none;
-  }
+  } */
   
-  .name input::placeholder,
+  /* .name input::placeholder,
   .password input::placeholder {
     font-size: 0.9rem;
   }
   
   .name-password-login-buttonnew {
     margin-top: 10%;
-  }
+  } */
   
   /* login button */
-  .login-btn button {
+  /* .login-btn button {
     border: none;
     width: 300px;
     margin-left: 25px;
@@ -128,18 +128,18 @@
   
   .login-btn button:hover {
     background-color: rgba(0, 162, 255, 0.5);
-  }
+  } */
   
   /* forget and sign up container */
-  .forget-password-sign-up-container {
+  /* .forget-password-sign-up-container {
     width: 100%;
     height: 30px;
     margin-top: 25%;
     position: relative;
-  }
+  } */
   
   /* forget password */
-  .forget-password {
+  /* .forget-password {
     position: absolute;
     left: 10%;
   }
@@ -154,10 +154,10 @@
     text-decoration: none;
     text-shadow: 0px 0px 8px rgba(33, 10, 165, 0.9),
       0px 0px 12px rgba(20, 201, 60, 0.7);
-  }
+  } */
   
   /* Sign up */
-  .sign-up {
+  /* .sign-up {
     position: absolute;
     right: 10%;
   }
@@ -176,4 +176,4 @@
   
   .sign-up a:hover {
     background-color: rgba(0, 162, 255, 0.5);
-  }
+  } */

@@ -30,7 +30,7 @@ function Login() {
           
             setmessage(data.message || "Login Successful");
             alert("Login Successful");
-            navigate('/home');
+            navigate('/getproductforseller');
           } else {
             setmessage(data.message || "Login Failed");
             alert("Login Failed");
