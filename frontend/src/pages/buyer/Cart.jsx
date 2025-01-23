@@ -55,12 +55,41 @@ const Cart = () => {
   }, [token]);
 
   // Handle quantity change for an item
-  const handleQuantityChange = (id, quantity) => {
-    const updatedCart = cartItems.map((item) =>
-      item._id === id ? { ...item, quantity } : item // Update quantity for the item
-    );
-    setCartItems(updatedCart); // Update cart items state
-    calculateTotal(updatedCart); // Recalculate total
+  const handleQuantityChange = async (id, quantity) => {
+    console.log("Changing quantity for item ID:", id, "to quantity:", quantity); // Log the ID and new quantity
+    const action = quantity > cartItems.find(item => item.productId._id === id).quantity ? 'increment' : 'decrement';
+    try {
+      await axios.put("http://localhost:3000/cart/updatequantity", { productId: id, action }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const updatedCart = cartItems.map((item) =>
+        item._id === id ? { ...item, quantity } : item // Update quantity for the item
+      );
+      setCartItems(updatedCart); // Update cart items state
+      calculateTotal(updatedCart); // Recalculate total
+    } catch (error) {
+      console.error("Error updating cart item:", error);
+    }
+  };
+
+  // Handle remove item from cart
+  const handleRemoveItem = async (id) => {
+    console.log("Removing item with ID:", id); // Log the ID being removed
+    console.log("Token being sent:", token); // Log the token being sent
+    try {
+      await axios.delete("http://localhost:3000/cart/removefromcart", { data: { productId: id } }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const updatedCart = cartItems.filter(item => item._id !== id);
+      setCartItems(updatedCart); // Update cart items state
+      calculateTotal(updatedCart); // Recalculate total
+    } catch (error) {
+      console.error("Error removing item from cart:", error);
+    }
   };
 
   // Calculate total, subtotal, tax, and shipping fee
@@ -109,16 +138,16 @@ const Cart = () => {
                       <h3>{item.productId.name}</h3>
                       <p>Price: ₹{item.productId.adminPrice}</p>
                       <div className="quantity-control">
-                        <button onClick={() => handleQuantityChange(item._id, item.quantity - 1)}>
+                        <button onClick={() => handleQuantityChange(item.productId._id, item.quantity - 1)}>
                           -
                         </button>
                         <span>{item.quantity}</span>
-                        <button onClick={() => handleQuantityChange(item._id, item.quantity + 1)}>
+                        <button onClick={() => handleQuantityChange(item.productId._id, item.quantity + 1)}>
                           +
                         </button>
                       </div>
                       <p>Total: ₹{item.productId.adminPrice * item.quantity}</p>
-                      <button className="remove-button"> <a href="">Remove</a></button>
+                      <button className="remove-button" onClick={() => handleRemoveItem(item.productId._id)}>Remove</button>
                     </div>
                   </div>
                 ))}

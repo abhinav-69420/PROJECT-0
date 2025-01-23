@@ -9,5 +9,5 @@ cartRouter.post('/addtocart',authMiddleware, cartController.addToCart);
 cartRouter.delete('/removefromcart',authMiddleware, cartController.removeFromCart);
 cartRouter.get('/getcart',authMiddleware, cartController.getCart);
 cartRouter.put('/updatequantity',authMiddleware, cartController.updateCartItem);
-
+    
 module.exports = cartRouter;

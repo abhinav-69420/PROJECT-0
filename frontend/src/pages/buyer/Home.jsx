@@ -36,7 +36,6 @@ function Home() {
       alert('You must be logged in to add items to the cart.');
       return;
     }
-    console.log(product._id);
     
     try {
       const response = await axios.post(
@@ -73,7 +72,8 @@ function Home() {
         <div className="maincart">
           {products.map((product) => (
             <div key={product._id} className="container">
-              <img src={product?.images ? `http://localhost:3000/uploads/${product.images}` : placeholderImage} alt="Product" />
+              {/* <img src={product.images ? `http://localhost:3000/uploads/${product.images}` : placeholderImage} alt="Product" /> */}
+              <img src={placeholderImage}/>
               <h3>{product.name}</h3>
               {/* <h4>{product.description}</h4> */}
               <h6>₹{(product.adminPrice ?? product.sellerPrice).toFixed(2)}</h6>
