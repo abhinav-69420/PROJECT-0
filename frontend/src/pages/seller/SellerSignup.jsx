@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../seller/SellerSignup.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbarseller from "../../components/Navbarseller";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -34,6 +35,9 @@ function Signup() {
   };
 
   return (
+  
+    <>
+    <Navbarseller />
     <div className="signup-container">
       <div className="signup-form">
         <div className="signup-form-fields">
@@ -95,7 +99,7 @@ function Signup() {
                   <a href="#">Already have an account?</a>
                 </div>
                 <div className="signup-login-button">
-                  <a href="#">Login</a>
+                  <a href="loginseller">Login</a>
                 </div>
               </div>
             </div>
@@ -103,6 +107,7 @@ function Signup() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

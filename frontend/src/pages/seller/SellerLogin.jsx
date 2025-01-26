@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './SellerLogin.css';
 import { useNavigate } from 'react-router-dom';
+import Navbarseller from '../../components/Navbarseller';
 
 function Login() {
   const [usernameOremail, setUsernameOremail] = useState("");
@@ -48,52 +49,62 @@ function Login() {
 
   return (
     <>
-      <div className="seller-containers">
-        <div className="seller-login-forms">
-          <div className="seller-login-form-field">
-            <div className="seller-login-input-groupnew">
-              <div className="seller-name-password-login-buttonnew">
-                <form onSubmit={handleSubmit}>
-                  <div className="seller-name">
-                    <input
-                      type="text"
-                      name="user-name"
-                      id="user-name"
-                      placeholder=" Email or username"
-                      value={usernameOremail}
-                      onChange={(e) => setUsernameOremail(e.target.value)}
-                    />
-                  </div>
-                  <div className="seller-password">
-                    <input
-                      type="password"
-                      name="password"
-                      id="user-password"
-                      placeholder="Password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
-                  <div className="seller-login-btn">
-                    <button type="submit">Log In</button>
-                  </div>
-                </form>
-                {message && <p className='seller-message'>{message}</p>}
-                <div className="seller-forget-password-sign-up-container">
-                  <div className="forget-password">
-                    <a href="#">Forget Password?</a>
-                  </div>
-                  <div className="seller-sign-up">
-                    <a href="#">Sign Up</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+    <Navbarseller/>
+    <div className="seller-containers">
+     <div className="seller-login-forms">
+       <div className="seller-login-form-field">
+         <div className="seller-login-input-groupnew">
+           <div className="seller-name-password-login-buttonnew">
+             {/* User Icon */}
+             <form onSubmit={handlesubmit}>
+               {/* Name Field */}
+               <div className="seller-name">
+               
+                 <input
+                   type="text"
+                   name="user-name"
+                   id="user-name"
+                   placeholder=" Email or username"
+                   value={usernameOremail}
+                   onChange={(e) => setUsernameOremail(e.target.value)}
+                 />
+               </div>
+               {/* Password Field */}
+               <div className="seller-password">
+   
+                 <input
+                   type="password"
+                   name="password"
+                   id="user-password"
+                   placeholder="Password"
+                   value={password}
+                   onChange={(e) => setPassword(e.target.value)}
+                 />
+               </div>
+               {/* Login Button Field */}
+               <div className="seller-login-btn">
+                 <button type="submit">Log In</button>
+               </div>
+             </form>  
+             {message && <p className='seller-message'>{message}</p>}
+
+             {/* Forget Password and Sign Up Field */}
+             <div className="seller-forget-password-sign-up-container">
+               <div className="forget-password">
+                 <a href="#">Forget Password?</a>
+               </div>
+               <div className="seller-sign-up">
+                 <a href="/signupseller">Sign Up</a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   
+       </>
+  )
 }
 
 export default Login;

@@ -41,7 +41,7 @@ function Login() {
   };
   return (
     <>
-    <Navbar/>
+    <Navbar />
       <div className="buyerlg-container">
         <div className="buyerlg-login-form">
           <div className="buyerlg-login-form-fields">
