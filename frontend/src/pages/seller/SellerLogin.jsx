@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './SellerLogin.css'
 import { useNavigate } from 'react-router-dom';
+import Navbarseller from '../../components/Navbarseller';
 
 function Login() {
   const [usernameOremail,setUsernameOremail] = useState("");
@@ -42,6 +43,7 @@ function Login() {
 
   return (
     <>
+    <Navbarseller/>
     <div className="seller-containers">
      <div className="seller-login-forms">
        <div className="seller-login-form-field">
@@ -86,7 +88,7 @@ function Login() {
                  <a href="#">Forget Password?</a>
                </div>
                <div className="seller-sign-up">
-                 <a href="#">Sign Up</a>
+                 <a href="/signupseller">Sign Up</a>
                </div>
              </div>
            </div>

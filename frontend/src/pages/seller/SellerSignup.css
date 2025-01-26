@@ -17,6 +17,7 @@ body {
 
 /* Signup Container */
 .signup-container {
+  /* margin-top: 100px; */
   width: 100%;
   max-width: 400px;
   padding: 20px;
@@ -97,14 +98,22 @@ body {
   margin-top: 15px;
 }
 
-.signup-login-text a,
-.signup-login-button a {
+.signup-login-text a {
   color: #007bff;
   text-decoration: none;
   font-size: 14px;
 }
 
-.signup-login-text a:hover,
-.signup-login-button a:hover {
+.signup-login-text a:hover {
   text-decoration: underline;
+}
+.signup-login-button a{
+  color: white;
+  background-color: rgba(0, 162, 255, 1);
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 400;
 }

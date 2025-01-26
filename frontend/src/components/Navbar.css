@@ -1,31 +1,32 @@
 .navbar {
   background-color: rgb(245, 245, 245);
-  width: auto; /* Make the navbar responsive */
+  width: 100%; /* Make the navbar stretch across the screen */
   position: fixed; /* Fix the navbar at the top */
   top: 0; /* Ensure it sticks to the top */
   left: 0;
   z-index: 1000; /* Ensure it stays above other content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
 }
 
 nav {
   display: flex;
-  border: 1px solid white;
   align-items: center;
   padding: 8px 24px;
   font-size: 1.2em;
   position: sticky;
   top: 0;
 }
-li{
-  margin-left: auto;
-}
 
 ul {
   list-style-type: none;
   display: flex;
-  margin-left: 520px;
+  margin: 0;
+  padding: 0;
   gap: 40px;
-  margin-right: 100px;
+}
+
+ul li {
+  margin: 0;
 }
 
 a {
@@ -52,7 +53,6 @@ li:hover {
   font-weight: 900;
   font-style: italic;
   gap: 2px;
-  margin-left: 80px;
 }
 
 .home12 {
@@ -98,4 +98,52 @@ span {
 
 .search-bar button:hover {
   background-color: #e9ecef;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack the navbar items vertically */
+    align-items: flex-start; /* Align items to the left */
+    padding: 16px; /* Add extra padding for touchscreens */
+  }
+
+  ul {
+    flex-direction: column; /* Stack menu items vertically */
+    gap: 10px;
+    margin: 10px 0; /* Add spacing around menu */
+  }
+
+  .search-container {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%; /* Make the search bar full width */
+    margin-left: 0;
+  }
+
+  .search-bar input {
+    width: 80%; /* Adjust input size */
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    font-size: 1rem; /* Slightly reduce font size */
+    padding: 12px;
+  }
+
+  ul li a {
+    font-size: 16px;
+  }
+
+  .search-bar input {
+    width: 70%;
+  }
+
+  .search-bar button {
+    height: 36px; /* Adjust button height */
+  }
 }
