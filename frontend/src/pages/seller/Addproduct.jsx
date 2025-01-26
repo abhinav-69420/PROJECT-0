@@ -20,7 +20,7 @@ console.log(formData);
   // Handle form input changes
   const handleChange = (e) => {
     
-    setFormData({
+    setFormData({ 
       ...formData,
       [e.target.name]: e.target.value
     });
