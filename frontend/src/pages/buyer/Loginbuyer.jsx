@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Loginbuyer.css";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/Navbar";
 
 function Login() {
   const [usernameOremail, setUsernameOremail] = useState("");
@@ -40,6 +41,7 @@ function Login() {
   };
   return (
     <>
+    <Navbar/>
       <div className="buyerlg-container">
         <div className="buyerlg-login-form">
           <div className="buyerlg-login-form-fields">
