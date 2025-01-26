@@ -56,7 +56,7 @@ function Login() {
          <div className="seller-login-input-groupnew">
            <div className="seller-name-password-login-buttonnew">
              {/* User Icon */}
-             <form onSubmit={handlesubmit}>
+             <form onSubmit={handleSubmit}>
                {/* Name Field */}
                <div className="seller-name">
                
