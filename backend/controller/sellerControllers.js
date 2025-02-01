@@ -68,7 +68,7 @@ const loginSeller = async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    res.status(200).json({ token, seller: { username: seller.username, email: seller.email } });
+    res.status(200).json({ token, seller: { username: seller.username, role:seller.role } });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

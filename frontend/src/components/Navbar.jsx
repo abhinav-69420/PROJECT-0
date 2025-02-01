@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css";
 
 function Navbar() {
+  const isLoggedIn = Boolean(localStorage.getItem("token")); 
   return (
     <div className="navbar">
       <nav>
@@ -24,13 +25,18 @@ function Navbar() {
           <li>
             <a href="/">Products</a>
           </li>
-          <li>
-            <a href="#">Login</a>
-          </li>
+           {/* Conditionally render the Login link */}
+           {!isLoggedIn && (
+            <li>
+              <a href="/login">Login</a>
+            </li>
+          )}
 
-          <li>
-            <a href="#">Profile</a>
-          </li>
+          {isLoggedIn && (
+            <li>
+              <a href="/buyersProfile">Profile</a>
+            </li>
+          )}
         </ul>
       </nav>
     </div>

@@ -2,42 +2,45 @@ import React from "react";
 import '../components/Navbar.css'
 //yyyyyyyyyyy
 function Navbarseller() {
+  const isLoggedIn = Boolean(localStorage.getItem("token"));
   return (
     <>
       <div className="navbar">
-        <nav>
-          <a href="/" className="home">
+      <nav>
+      <a href="/" className="home">
             Shopy <br />
             <a href="" className="home12">
               Explore <span>plus</span>{" "}
             </a>
           </a>
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Search for products, brands, and more..."
-            />
-          </div>
-          <ul>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search for products, brands, and more..."
+          />
+        </div>
+        <ul>
+          <li>
+            <a href="/cart">Cart</a>
+          </li>
+          <li>
+            <a href="/">Products</a>
+          </li>
+           {/* Conditionally render the Login link */}
+           {!isLoggedIn && (
             <li>
-              <a href="#">Dashboard</a>
+              <a href="/login">Login</a>
             </li>
-            <li>
-              <a href="/addproduct">Add Products</a>
-            </li>
-            <li>
-              <a href="/getproductforseller">View Products</a>
-            </li>
-            <li >
-              <a href="/login" className="text-yellow-600">Login</a>
-            </li>
+          )}
 
+          {isLoggedIn && (
             <li>
-              <a href="#">Profile</a>
+              <a href="/sellerProfile">Profile</a>
             </li>
-          </ul>
-        </nav>
-      </div>
+          )}
+        </ul>
+      </nav>
+    </div>
     </>
   );
 }

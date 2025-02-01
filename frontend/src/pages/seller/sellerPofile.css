@@ -1,0 +1,97 @@
+/* Base styling for profile container */
+.profile-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Profile Picture Section */
+  .profile-pic-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4CAF50;  /* Add a border to make it stand out */
+  }
+  
+  /* Profile Details Section */
+  .profile-details {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .profile-details p {
+    margin: 10px 0;
+  }
+  
+  .profile-details strong {
+    color: #4CAF50;
+    font-weight: bold;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .profile-container {
+      padding: 20px;
+    }
+  
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    .profile-details {
+      font-size: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .profile-container {
+      padding: 15px;
+    }
+  
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+    }
+  
+    h1 {
+      font-size: 1.3rem;
+    }
+  
+    .profile-details {
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* Add a subtle hover effect on the profile picture */
+  .profile-pic-container:hover .profile-pic {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  

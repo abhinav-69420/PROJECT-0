@@ -5,6 +5,8 @@ import Signupbuyer from './pages/buyer/SignupBuyer'
 import Loginseller from './pages/seller/SellerLogin'
 import Loginbuyer from './pages/buyer/Loginbuyer'
 import Addproduct from './pages/seller/Addproduct'
+import SellerProfile from './pages/seller/sellerProfile'
+import BuyersProfile from './pages/buyer/buyerProfile'
 import Viewproduct from './pages/seller/Viewproduct'
 import Navbaradmin from './components/Navbaradmin'
 import Viewproducts from './pages/admin/Viewproducts'
@@ -20,6 +22,8 @@ function App() {
     <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/signupseller" element={<Signupseller/>} />
+    <Route path="/sellerProfile" element={<SellerProfile/>} />
+    <Route path="/buyersProfile" element={<BuyersProfile/>} />
     <Route path="/signupbuyer" element={<Signupbuyer/>} />
     <Route path="/loginseller" element={<Loginseller/>}/>
     <Route path="/loginbuyer" element={<Loginbuyer/>}/>
