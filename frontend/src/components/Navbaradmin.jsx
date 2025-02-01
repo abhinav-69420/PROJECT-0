@@ -22,10 +22,10 @@ function Navbaradmin() {
               <a href="/getproductforadmin">viewproduct</a>
             </li>
             <li>
-              <a href="#">orders</a>
+              <a href="/orderpageforadmin">orders</a>
             </li>
             <li >
-              <a href="#" className="text-yellow-600">Login</a>
+              <a href="loginseller" className="text-yellow-600">Login</a>
             </li>
           </ul>
         </nav>

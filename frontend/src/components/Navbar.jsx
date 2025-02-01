@@ -25,7 +25,7 @@ function Navbar() {
             <a href="/">Products</a>
           </li>
           <li>
-            <a href="#">Login</a>
+            <a href="/loginbuyer">Login</a>
           </li>
 
           <li>

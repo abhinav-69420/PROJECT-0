@@ -69,11 +69,11 @@ const getOrderHistory = async (req, res) => {
 //   const products = await Promise.all(orderItems.map((item) => Product.findById(item.productId)));
 //   for (const [index, product] of products.entries()) {
 //     if (!product) {
-//       throw createError(404, `Product with ID ${orderItems[index].productId} not found`);
+//       throw createError(404, Product with ID ${orderItems[index].productId} not found);
 //     }
 
 //     if (product.quantity < orderItems[index].quantity) {
-//       throw createError(400, `Insufficient stock for product with ID ${orderItems[index].productId}`);
+//       throw createError(400, Insufficient stock for product with ID ${orderItems[index].productId});
 //     }
 
 //     const orderItemData = {
@@ -164,6 +164,63 @@ const createOrderItems = async (orderItems) => {
   };
 };
 
+// New function to update order status
+const updateOrderStatus = async (req, res) => {
+  const { orderId, status } = req.body;
+
+  // Validate status
+  const validStatuses = ['Approved', 'Processing', 'Delivered', 'Cancelled'];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ message: 'Invalid status value' });
+  }
+
+  try {
+    const updatedOrder = await Order.findByIdAndUpdate(
+      orderId,
+      { orderStatus: status },
+      { new: true }
+    );
+
+    if (!updatedOrder) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    res.status(200).json(updatedOrder);
+  } catch (error) {
+    console.error("Error updating order status:", error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+// New function to get all orders
+const getAllOrdersforAdmin = async (req, res) => {
+  try {
+    const orders = await Order.find().populate('orderItems.productId');
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error("Error fetching all orders:", error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+
+// api to get orders for seller
+const getOrdersForSeller = async (req, res) => {
+  const sellerId = req.params.sellerId;
+
+  try {
+    const orders = await Order.find({
+      'orderItems.sellerId': sellerId,
+      orderStatus: 'Processing' // Only fetch orders with status 'Processing'
+    }).populate('orderItems.productId');
+
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error("Error fetching orders for seller:", error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 const calculateSubtotal = (orderItemsData) => {
   return orderItemsData.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
 };
@@ -172,4 +229,8 @@ const calculateTotal = (orderItemsData) => {
   return calculateSubtotal(orderItemsData); // You can add taxes, shipping costs here
 };
 
-module.exports = { createOrder, getOrderHistory };
+module.exports = { createOrder, 
+  getOrderHistory, 
+  updateOrderStatus, 
+  getAllOrdersforAdmin,
+  getOrdersForSeller };

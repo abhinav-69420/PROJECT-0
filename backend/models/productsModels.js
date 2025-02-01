@@ -10,7 +10,9 @@ const productSchema = new mongoose.Schema({
     required: true
   },
   description: String,
+  // needs more combrihensive categories
   category: String,
+  
   sellerPrice: { 
     type: Number,
     min: 0,

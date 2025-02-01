@@ -29,7 +29,7 @@ function Navbarseller() {
               <a href="/getproductforseller">View Products</a>
             </li>
             <li >
-              <a href="/login" className="text-yellow-600">Login</a>
+              <a href="/loginseller" className="text-yellow-600">Login</a>
             </li>
 
             <li>

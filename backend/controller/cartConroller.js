@@ -84,7 +84,7 @@ const getCart = asyncHandler(async (req, res) => {
     const taxAmount = subtotal * taxRate;
 
     // Calculate the shipping fee (assuming a flat rate of $10)
-    const shippingFee = 10;
+    const shippingFee = 0;
 
     // Calculate the total cost
     const total = subtotal + taxAmount + shippingFee;
@@ -146,8 +146,28 @@ const updateCartItem = asyncHandler(async (req, res) => {
   }
 });
 
+//api to clear the cart
+const clearCart = async (req, res) => {
+  const userId = req.user._id; // Assuming user ID is available in the request
+
+  try {
+    // Clear the cart for the user
+    await Cart.findOneAndUpdate(
+      { buyerId: userId },
+      { cartItems: [] }, // Set cartItems to an empty array
+      { new: true }
+    );
+
+    res.status(200).json({ message: 'Cart cleared successfully' });
+  } catch (error) {
+    console.error("Error clearing cart:", error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 module.exports = { 
     addToCart, 
-    removeFromCart, 
+    removeFromCart,
+    clearCart, 
     getCart,
     updateCartItem };

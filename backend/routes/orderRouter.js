@@ -45,4 +45,25 @@ orderRouter.get('/history', async (req, res) => {
 //     }
 //   });
 
+
+orderRouter.post('/updatestatus', authMiddleware, async (req, res) => {
+  try {
+    await orderController.updateOrderStatus(req, res);
+  } catch (error) {
+    const err = createError(500, error.message);
+    res.status(err.statusCode).json(err);
+  }
+});
+
+// Route for getting all orders
+orderRouter.get('/getordersforadmin', authMiddleware, async (req, res) => {
+  try {
+    await orderController.getAllOrdersforAdmin(req, res);
+  } catch (error) {
+    const err = createError(500, error.message);
+    res.status(err.statusCode).json(err);
+  }
+});
+
+
 module.exports = orderRouter;

@@ -111,6 +111,50 @@ const Cart = () => {
     setTotal(total);
   };
 
+  //buy now function
+  const buyNow = async () => {
+    const confirmation = window.confirm(`Do you want to place the order for all items in your cart?`);
+  
+    if (confirmation) {
+      const token = localStorage.getItem('token'); // Retrieve the token
+  
+      if (!token) {
+        alert('You must be logged in to place an order.');
+        return;
+      }
+  
+      try {
+        const response = await axios.post('http://localhost:3000/order/createorder', {
+          orderItems: cartItems.map(item => ({
+            productId: item.productId._id,
+            quantity: item.quantity,
+          })),
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (response.status === 201) {
+          alert('Order placed successfully!');
+          // Clear the cart after successful order placement
+          await axios.delete('http://localhost:3000/cart/clearcart', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          resetCart(); // Reset the cart state
+        } else {
+          console.error('Error creating order:', response.statusText);
+          alert('Error creating order. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error creating order:', error);
+        alert('Error creating order. Please try again.');
+      }
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -180,6 +224,7 @@ const Cart = () => {
                 <hr />
                 <p style={{ fontSize: "20px", fontWeight: "550" }}>Total: ₹{total}</p>
               </div>
+              <button onClick={() => buyNow()}>buy Now</button>
             </div>
           </div>
         )}

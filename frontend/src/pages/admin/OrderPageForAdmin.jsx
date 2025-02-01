@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Navbaradmin from "../../components/Navbaradmin";
 
 function OrderPageForAdmin() {
   const [orders, setOrders] = useState([]);
@@ -14,7 +15,7 @@ function OrderPageForAdmin() {
         }
 
         const response = await axios.get(
-          "http://localhost:3000/order/history",
+          "http://localhost:3000/order/getordersforadmin",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -36,29 +37,35 @@ function OrderPageForAdmin() {
 
   const handleOrderStatus = async (orderId, newStatus) => {
     try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-            alert("No token found. Please log in.");    
-            return;
-            }
-            const response = await axios.put(`http://localhost:3000/order/${orderId}/status`,
-                { status: newStatus },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        },
-                        });
-                        setOrders((prevOrders) =>
-                            prevOrders.map((order) =>
-                                order.id === orderId ? { ...order, status: newStatus } : order
-                        ));
-                        alert("order status updated ");
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("No token found. Please log in.");
+        return;
+      }
+  
+      const response = await axios.post(
+        "http://localhost:3000/orders/updatestatus",
+        { orderId, status: newStatus ,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order._id === orderId ? { ...order, orderStatus: newStatus } : order
+        )
+      );
+      alert("Order status updated");
     } catch (error) {
-        console.error("Error updating order status:", error);
+      console.error("Error updating order status:", error);
+      alert("Error updating order status: " + (error.response?.data?.message || "An unexpected error occurred"));
     }
-    };
+  };
   return (
     <>
+    <Navbaradmin/>
       <div className="order-container">
         <h1>Order List</h1>
         <table className="order-table">

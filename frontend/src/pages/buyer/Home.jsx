@@ -65,6 +65,8 @@ function Home() {
     }
   };
 
+  //buy now function
+
   return (
     <>
       <Navbar/>
