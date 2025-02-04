@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Signupbuyer.css";
 import Navbar from "../../components/Navbar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -21,26 +21,23 @@ function Signup() {
     },
   });
   const navigate = useNavigate();
-
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // Check if the field is part of the nested address object
     if (name.includes("address.")) {
-      const key = name.split(".")[1]; // Get the nested key
+      const key = name.split(".")[1];
       setFormData({
         ...formData,
         address: {
           ...formData.address,
-          [key]: value, // Update the specific field in the address object
+          [key]: value,
         },
       });
     } else {
       setFormData({
         ...formData,
-        [name]: value, // Update the specific field in the state
+        [name]: value,
       });
     }
   };
@@ -53,144 +50,222 @@ function Signup() {
         formData
       );
       setMessage(response.data.message);
-      alert(response.data.message);
+      Swal.fire({
+        title: "Account Created",
+        icon: "success",
+        draggable: true
+      });
       navigate("/loginbuyer");
     } catch (error) {
       setMessage(error.response?.data?.message || "Something went wrong");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Login failed",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
   };
 
   return (
     <>
       <Navbar />
-      <div className="buyer-container">
-        <div className="buyer-login-form">
-          <div className="buyer-login-form-fields">
-            <div className="buyer-login-input-group">
-              <div className="buyer-name-password-login-button">
-                {/* User Icon */}
-                <form onSubmit={handleSubmit}>
-                  {/* Name Field */}
-                  <div className="buyer-firstname">
-                    <div className="buyer-name">
-                      {/* Firstname and Lastname Fields */}
-                      <input
-                        type="text"
-                        name="firstname"
-                        id="firstname"
-                        placeholder="First name"
-                        value={formData.firstname}
-                        onChange={handleChange}
-                      />
-                      <input
-                        type="text"
-                        name="lastname"
-                        id="lastname"
-                        placeholder="Last name"
-                        value={formData.lastname}
-                        onChange={handleChange}
-                      />
-
-                      {/* Username Field */}
-                      <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        placeholder="Username"
-                        value={formData.username}
-                        onChange={handleChange}
-                      />
-
-                      {/* Email Field */}
-                      <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                      <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                      />
-
-                      {/* Phone Number Field */}
-                      <input
-                        type="number"
-                        name="phoneNo"
-                        id="phoneNo"
-                        placeholder="Phone Number"
-                        value={formData.phoneNo}
-                        onChange={handleChange}
-                      />
-
-                      {/* Address Fields */}
-                      <input
-                        type="text"
-                        name="address.street"
-                        id="street"
-                        placeholder="Street"
-                        value={formData.address.street}
-                        onChange={handleChange}
-                      />
-                      <select
-                        name="address.state"
-                        id="state"
-                        value={formData.address.state}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select State</option>
-                        <option value="california">California</option>
-                        <option value="texas">Texas</option>
-                      </select>
-                      <input
-                        type="number"
-                        name="address.pin"
-                        id="pincode"
-                        placeholder="Pincode"
-                        value={formData.address.pin}
-                        onChange={handleChange}
-                      />
-                      <select
-                        name="address.country"
-                        id="country"
-                        value={formData.address.country}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select Country</option>
-                        <option value="usa">United States</option>
-                        <option value="india">India</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Login Button Field */}
-                  <div className="buyer-login-btn">
-                    <button type="submit">Sign up</button>
-                  </div>
-                </form>
-                {/* Message Display */}
-                {message && <p className="signup-message">{message}</p>}
-
-                {/* Forget Password and Sign Up Field */}
-                <div className="buyer-forget-password-sign-up-container">
-                  <div className="buyer-forget-password">
-                    <a href="#">Already have an account?</a>
-                  </div>
-                  <div className="buyer-sign-up">
-                    <a href="#">Login</a>
-                  </div>
-                </div>
-              </div>
+      <div className="flex flex-col justify-center items-center font-[sans-serif] bg-gradient-to-r from--800 to--500 lg:h-screen p-6">
+      <div className="grid md:grid-cols-2 items-center gap-y-8 bg-white max-w-7xl w-full shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md overflow-hidden">
+        <div className="max-md:order-1 flex flex-col justify-center sm:p-8 p-4 bg-gradient-to-r from--300 to--500 w-full h-full">
+          <div className="max-w-md space-y-12 mx-auto">
+            <div>
+              <h4 className="text-black text-lg font-semibold">
+                Create Your Account
+              </h4>
+              <p className="text-[13px] text-black-200 mt-2">
+                Welcome to our registration page! Get started by creating your
+                account.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-black text-lg font-semibold">
+                Simple & Secure Registration
+              </h4>
+              <p className="text-[13px] text-black-200 mt-2">
+                Our registration process is designed to be straightforward and
+                secure. We prioritize your privacy and data security.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-black text-lg font-semibold">
+                Terms and Conditions Agreement
+              </h4>
+              <p className="text-[13px] text-black-200 mt-2">
+                Require users to accept the terms and conditions of your service
+                during registration.
+              </p>
             </div>
           </div>
         </div>
+
+        <form className="sm:p-8 p-4 w-full" onSubmit={handleSubmit}>
+          <div className="md:mb-12 mb-8">
+            <h3 className="text-gray-800 text-3xl font-bold">Register</h3>
+            {message && <p className="text-red-500 text-sm mt-2">{message}</p>}
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-6">
+            <div>
+              <label className="text-gray-800 text-sm mb-2 block">
+                First Name
+              </label>
+              <input
+                name="firstname"
+                type="text"
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+                placeholder="Enter name"
+                value={formData.firstname}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="text-gray-800 text-sm mb-2 block">
+                Last Name
+              </label>
+              <input
+                name="lastname"
+                type="text"
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+                placeholder="Enter last name"
+                value={formData.lastname}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="text-gray-800 text-sm mb-2 block">
+                User name
+              </label>
+              <input
+                name="username"
+                type="text"
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+                placeholder="username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="text-gray-800 text-sm mb-2 block">Email Id</label>
+              <input
+                name="email"
+                type="email"
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+                placeholder="Enter email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="text-gray-800 text-sm mb-2 block">Password</label>
+              <input
+                name="password"
+                type="password"
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+                placeholder="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="text-gray-800 text-sm mb-2 block">
+                Mobile No.
+              </label>
+              <input
+                name="phoneNo"
+                type="number"
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+                placeholder="Enter mobile number"
+                value={formData.phoneNo}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="text-gray-800 text-sm mb-2 block">street</label>
+              <input
+                 type="text"
+                 name="address.street"
+                 placeholder="Street"
+                 value={formData.address.street}
+                 onChange={handleChange}                
+                className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+                required
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+            <input type="number" name="address.pin" placeholder="Pincode"  className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+            value={formData.address.pin}
+            onChange={handleChange} />
+            <select name="address.state" className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+            value={formData.address.state}
+            onChange={handleChange}
+            >
+              <option value="">Select State</option>
+              <option value="california">California</option>
+              <option value="texas">Texas</option>
+            </select>
+          </div>
+            <div>
+            <select
+              name="address.country"
+              value={formData.address.country}
+              onChange={handleChange}
+              className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-2.5 rounded-md border focus:bg-transparent focus:border-black outline-none transition-all"
+              required
+            >
+               <option value="">Select Country</option>
+              <option value="usa">United States</option>
+              <option value="india">India</option>
+            </select>             
+            </div>
+          </div>
+
+          <div className="flex items-center mt-6">
+            <input
+              id="terms"
+              type="checkbox"
+              className="h-4 w-4 shrink-0 rounded"
+              onChange={handleChange}
+            />
+            <label htmlFor="terms" className="ml-3 block text-sm">
+              I accept the{" "}
+              <a
+                href="#"
+                className="text-blue-500 font-semibold hover:underline ml-1"
+              >
+                Terms and Conditions
+              </a>
+            </label>
+          </div>
+
+          <div className="mt-6">
+            <button
+              type="submit"
+              className="py-3 px-6 text-sm tracking-wide rounded-md text-white bg-gray-800 hover:bg-gray-900 focus:outline-none transition-all"
+            >
+              Sign up
+            </button>
+            <p className="text-xs pt-2">
+              Already have an account?
+              <Link to="/loginbuyer">
+                <span className="text-blue-500"> Login</span>
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
+    </div>
     </>
   );
 }

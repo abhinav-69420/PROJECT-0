@@ -30,7 +30,6 @@ function App() {
     <Route path='/getproductforadmin' element={<Viewproducts/>} />
     <Route path='/cart' element={<Cart/>}/>
     <Route path='/orderpageforadmin' element={<OrderPageForAdmin/>}/>
-
     </Routes>
     </>
   )

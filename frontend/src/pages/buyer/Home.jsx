@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import axios from 'axios';
-import './Homepage.css'
 import placeholderImage from '../../assets/image.png'
 
 function Home() {
@@ -69,6 +68,7 @@ function Home() {
     <>
       <Navbar/>
       <div className="mainpart">
+        <img src="" alt="" />
         <div className="maincart">
           {products.map((product) => (
             <div key={product._id} className="container">

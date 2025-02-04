@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Navbarseller from '../../components/Navbarseller';
-import '../seller/Viewproduct.css';
 
 
 function Viewproduct() {
@@ -40,41 +39,56 @@ function Viewproduct() {
 
   return (
     <>
+
+    <div className="flex">
+      {/* Sidebar */}
       <Navbarseller />
-      <div className="product-container">
-        <h1>Product List</h1>
-        <table className="product-table">
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Quantity</th>
-              <th>Stock</th>
-              <th>Seller Price</th>
-              <th>Category</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product._id}>
-                <td>
-                <img
-                    src={`http://localhost:3000/uploads/${product?.images}`}  alt={product.name}
-                    className="product-image"                   
-                />
-                </td>
-                <td>{product.name}</td>
-                <td>{product.description}</td>
-                <td>{product.quantity}</td>
-                <td>{product.stock}</td>
-                <td>₹{product.sellerPrice.toFixed(2)}</td>
-                <td>{product.category}</td>
+
+      {/* Main Content */}
+      <div className="flex-1 ml-64 p-6">
+        <h1 className="text-3xl font-semibold text-center text-gray-600 mb-8">
+          Product List
+        </h1>
+
+        <div className="overflow-x-auto bg-white shadow-lg rounded-lg p-4">
+          <table className="min-w-full table-auto border-collapse">
+            <thead>
+              <tr className="bg-gray-100 text-gray-700">
+                <th className="border p-3 text-left">Image</th>
+                <th className="border p-3 text-left">Name</th>
+                <th className="border p-3 text-left">Description</th>
+                <th className="border p-3 text-left">Quantity</th>
+                <th className="border p-3 text-left">Stock</th>
+                <th className="border p-3 text-left">Seller Price</th>
+                <th className="border p-3 text-left">Category</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {products.map((product) => (
+                <tr
+                  key={product._id}
+                  className="hover:bg-gray-50 transition-all cursor-pointer"
+                >
+                  <td className="border p-3">
+                    <img
+                      src={`http://localhost:3000/uploads/${product?.images}`}
+                      alt={product.name}
+                      className="w-16 h-16 object-cover rounded-md"
+                    />
+                  </td>
+                  <td className="border p-3">{product.name}</td>
+                  <td className="border p-3">{product.description}</td>
+                  <td className="border p-3">{product.quantity}</td>
+                  <td className="border p-3">{product.stock}</td>
+                  <td className="border p-3">₹{product.sellerPrice.toFixed(2)}</td>
+                  <td className="border p-3">{product.category}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
     </>
   );
 }

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Navbarseller from '../../components/Navbarseller';
-import './Addproduct.css'
 import axios from 'axios';
-
+import Swal from 'sweetalert2'
 function Addproduct() {
-  // Initialize state for form data
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -13,11 +11,10 @@ function Addproduct() {
     quantity:'',
     image:null,
     stock:''
-    // Add more fields as needed
+
   });
 console.log(formData);
 
-  // Handle form input changes
   const handleChange = (e) => {
     
     setFormData({ 
@@ -26,8 +23,6 @@ console.log(formData);
     });
     
   };
-
-  // Handle image file changes
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     console.log(file);
@@ -42,10 +37,8 @@ console.log(formData);
   };
 
 
-  // Handle form submission
   const handleSubmit = async(e) => {
     e.preventDefault();
-        // Create FormData for file upload
         const data = new FormData();
         data.append("name", formData.name);
         data.append("description", formData.description);
@@ -54,12 +47,16 @@ console.log(formData);
         data.append("quantity", formData.quantity);
         data.append("stock", formData.stock);
         if (formData.image) {
-          data.append("images", formData.image); // Append the image file
+          data.append("images", formData.image); 
         }
     try {
         const token = localStorage.getItem('token');
         if(!token){
-            alert('No token found. Please log in.');
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Plz..Login",
+          });
             return;
          }
         const response = await axios.post('http://localhost:3000/product/addproduct', data,
@@ -72,7 +69,11 @@ console.log(formData);
         );
         console.log(data)
         console.log('Product created successfully:', response.data);
-        alert('Product created successfully');
+        Swal.fire({
+          icon: "success",
+          title: "Product created successfully",
+          text: "Product created successfully",
+          });
         setFormData({
             name: '',
             description: '',
@@ -87,14 +88,23 @@ console.log(formData);
       } catch (error) {
         if(error.response){
             console.log(error.response.data);
-            alert('Error creating product: ' + (error.response.data.message || 'Unknown server error'));
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
             }
             else if (error.request) {
                 console.error('No response received:', error.request);
                 alert('Error creating product: No response from the server');
               } else {
                 console.error('Request setup error:', error.message);
-                alert('Error creating product: ' + error.message);
+                Swal.fire({
+                  title: "Product Added",
+                  icon: "success",
+                  draggable: true
+                });
 
         }
       }
@@ -102,79 +112,130 @@ console.log(formData);
 
   return (
     <>
-    <Navbarseller/>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor=" category"> category:</label>
-         <input
-            type="text"
-            id="category"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="sellerPrice">SellerPrice:</label>
-         <input
-            type="number"
-            id="sellerPrice"
-            name="sellerPrice"
-            value={formData.sellerPrice}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-        <label htmlFor="stock">Stock:</label>
-         <input
-            type="number"
-            id="stock"
-            name="stock"
-            value={formData.stock}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="quantity">quantity:</label>
-            <input
-            type="text"
-            id="quantity"
-            name="quantity"
-            value={formData.quantity}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Add more input fields for category, sellerPrice, quantity */}
-        <div>
-            
-          <label htmlFor="images">Images:</label>
-          <input type="file"
-           multiple onChange={handleImageChange} 
+    <Navbarseller />
+    <div className="flex justify-center mt-10 px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full md:w-2/3 lg:w-1/2 bg-white shadow-lg rounded-lg p-6"
+      >
+        <h2 className="text-2xl font-semibold mb-6 text-center">Create Product</h2>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Name */}
+          <div>
+            <label htmlFor="name" className="block font-medium mb-1">
+              Name:
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          {/* Description */}
+          <div>
+            <label htmlFor="description" className="block font-medium mb-1">
+              Description:
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          {/* Category */}
+          <div>
+            <label htmlFor="category" className="block font-medium mb-1">
+              Category:
+            </label>
+            <input
+              type="text"
+              id="category"
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          {/* Seller Price */}
+          <div>
+            <label htmlFor="sellerPrice" className="block font-medium mb-1">
+              Seller Price:
+            </label>
+            <input
+              type="number"
+              id="sellerPrice"
+              name="sellerPrice"
+              value={formData.sellerPrice}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          {/* Stock */}
+          <div>
+            <label htmlFor="stock" className="block font-medium mb-1">
+              Stock:
+            </label>
+            <input
+              type="number"
+              id="stock"
+              name="stock"
+              value={formData.stock}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+
+          {/* Quantity */}
+          <div>
+            <label htmlFor="quantity" className="block font-medium mb-1">
+              Quantity:
+            </label>
+            <input
+              type="text"
+              id="quantity"
+              name="quantity"
+              value={formData.quantity}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+        </div>
+
+        {/* Image Upload */}
+        <div className="mt-4">
+          <label htmlFor="images" className="block font-medium mb-1">
+            Images:
+          </label>
+          <input
+            type="file"
+            multiple
+            onChange={handleImageChange}
+            className="w-full p-2 border rounded-md"
           />
         </div>
-        <button type="submit">Create Product</button>
+
+        {/* Submit Button */}
+        <div className="mt-6">
+          <button
+            type="submit"
+            className="w-full bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700 transition"
+          >
+            Create Product
+          </button>
+        </div>
       </form>
-    </>
+    </div>
+  </>
   );
 }
 

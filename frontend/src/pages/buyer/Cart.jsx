@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./Cart.css";
 import axios from "axios";
 import Navbar from "../../components/Navbar";
 
@@ -113,78 +112,76 @@ const Cart = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="cart-container" style={{ marginTop: "110px" }}>
-        <h1>Shopping Cart</h1>
-        {cartItems.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <div className="cart-body">
-            <div className="cart-items">
-              {cartItems.map((item) => (
-                <div key={item._id} className="cart-item">
-                  <div className="item-image">
-                    {item.productId.images.map((image, index) => (
-                      <img
-                        key={index}
-                        src={`http://localhost:3000/uploads/${image}`}
-                        alt={item.productId.name}
-                        style={{ width: "200px", height: "170px" }}
-                      />
-                    ))}
-                  </div>
-                  <div className="item-details">
-                    <h3>{item.productId.name}</h3>
-                    <p>Price: ₹{item.productId.adminPrice}</p>
-                    <div className="quantity-control">
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(
-                            item.productId._id,
-                            item.quantity - 1
-                          )
-                        }
-                      >
-                        -
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(
-                            item.productId._id,
-                            item.quantity + 1
-                          )
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
-                    <p>Total: ₹{item.productId.adminPrice * item.quantity}</p>
+    <Navbar />
+    <div className="cart-container mt-28 px-4 sm:px-8 lg:px-16">
+      <h1 className="text-3xl font-bold mb-6">Shopping Cart</h1>
+      {cartItems.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        <div className="cart-body flex flex-col sm:flex-row gap-8">
+          <div className="cart-items flex-1">
+            {cartItems.map((item) => (
+              <div key={item._id} className="cart-item mb-6 flex flex-col sm:flex-row gap-4 bg-white p-4 rounded-lg shadow-lg">
+                <div className="item-image flex justify-center sm:w-48">
+                  {item.productId.images.map((image, index) => (
+                    <img
+                      key={index}
+                      src={`http://localhost:3000/uploads/${image}`}
+                      alt={item.productId.name}
+                      className="w-48 h-40 object-cover rounded-md"
+                    />
+                  ))}
+                </div>
+                <div className="item-details flex-1">
+                  <h3 className="text-xl font-semibold">{item.productId.name}</h3>
+                  <p className="text-lg text-gray-600 mt-2">Price: ₹{item.productId.adminPrice}</p>
+                  <div className="quantity-control flex items-center gap-2 mt-4">
                     <button
-                      className="remove-button"
-                      onClick={() => handleRemoveItem(item.productId._id)}
+                      onClick={() =>
+                        handleQuantityChange(item.productId._id, item.quantity - 1)
+                      }
+                      className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition duration-200"
                     >
-                      Remove
+                      -
+                    </button>
+                    <span className="text-xl font-semibold">{item.quantity}</span>
+                    <button
+                      onClick={() =>
+                        handleQuantityChange(item.productId._id, item.quantity + 1)
+                      }
+                      className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition duration-200"
+                    >
+                      +
                     </button>
                   </div>
+                  <p className="text-lg font-semibold mt-4">
+                    Total: ₹{item.productId.adminPrice * item.quantity}
+                  </p>
+                  <button
+                    onClick={() => handleRemoveItem(item.productId._id)}
+                    className="mt-4 px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-200"
+                  >
+                    Remove
+                  </button>
                 </div>
-              ))}
-            </div>
-            <div className="cart-summary">
-              <h2>PRICE DETAILS</h2>
-              <hr />
-              <div className="summary-details">
-                <p>Subtotal: ₹{subtotal}</p>
-                <p>Tax Amount: ₹{taxAmount}</p>
-                <p>Shipping Fee: ₹{shippingFee}</p>
-                <hr />
-                <p style={{ fontSize: "20px", fontWeight: "550" }}>Total: ₹{total}</p>
               </div>
+            ))}
+          </div>
+          <div className="cart-summary sm:w-64 bg-white p-6 rounded-lg shadow-lg mt-8 sm:mt-0">
+            <h2 className="text-2xl font-semibold mb-4">PRICE DETAILS</h2>
+            <hr className="border-t-2 border-gray-300 mb-4" />
+            <div className="summary-details space-y-2">
+              <p>Subtotal: ₹{subtotal}</p>
+              <p>Tax Amount: ₹{taxAmount}</p>
+              <p>Shipping Fee: ₹{shippingFee}</p>
+              <hr className="border-t-2 border-gray-300 my-4" />
+              <p className="text-xl font-bold text-black">Total: ₹{total}</p>
             </div>
           </div>
-        )}
-      </div>
-    </>
+        </div>
+      )}
+    </div>
+  </>
   );
 };
 

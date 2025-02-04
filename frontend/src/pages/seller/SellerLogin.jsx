@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './SellerLogin.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbarseller from '../../components/Navbarseller';
+import Swal from 'sweetalert2'
 
 function Login() {
   const [usernameOremail, setUsernameOremail] = useState("");
@@ -30,7 +30,11 @@ function Login() {
         setUsernameOremail("");
         setPassword("");
         setMessage(data.message || "Login Successful");
-        alert("Login Successful");
+       Swal.fire({
+                title: "Login success...",
+                icon: "success",
+                draggable: true
+              });
 
         // Navigate based on the role
         if (role === 'seller') {
@@ -40,7 +44,12 @@ function Login() {
         }
       } else {
         setMessage(data.message || "Login Failed");
-        alert("Login Failed");
+       Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+                });
       }
     } catch (error) {
       setMessage("Login Failed");
@@ -49,61 +58,62 @@ function Login() {
 
   return (
     <>
-    <Navbarseller/>
-    <div className="seller-containers">
-     <div className="seller-login-forms">
-       <div className="seller-login-form-field">
-         <div className="seller-login-input-groupnew">
-           <div className="seller-name-password-login-buttonnew">
-             {/* User Icon */}
-             <form onSubmit={handleSubmit}>
-               {/* Name Field */}
-               <div className="seller-name">
-               
-                 <input
-                   type="text"
-                   name="user-name"
-                   id="user-name"
-                   placeholder=" Email or username"
-                   value={usernameOremail}
-                   onChange={(e) => setUsernameOremail(e.target.value)}
-                 />
-               </div>
-               {/* Password Field */}
-               <div className="seller-password">
-   
-                 <input
-                   type="password"
-                   name="password"
-                   id="user-password"
-                   placeholder="Password"
-                   value={password}
-                   onChange={(e) => setPassword(e.target.value)}
-                 />
-               </div>
-               {/* Login Button Field */}
-               <div className="seller-login-btn">
-                 <button type="submit">Log In</button>
-               </div>
-             </form>  
-             {message && <p className='seller-message'>{message}</p>}
+    <Navbarseller />
+    <div className="flex justify-center items-center h-screen bg-gray-100 px-4">
+      <div className="w-full sm:w-96 bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+        <h2 className="text-2xl font-semibold text-center text-gray-600 mb-6">
+          Seller Login
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Email/Username */}
+          <div>
+            <input
+              type="text"
+              name="user-name"
+              id="user-name"
+              placeholder="Email or Username"
+              value={usernameOremail}
+              onChange={(e) => setUsernameOremail(e.target.value)}
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
+            />
+          </div>
 
-             {/* Forget Password and Sign Up Field */}
-             <div className="seller-forget-password-sign-up-container">
-               <div className="forget-password">
-                 <a href="#">Forget Password?</a>
-               </div>
-               <div className="seller-sign-up">
-                 <a href="/signupseller">Sign Up</a>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
-   
-       </>
+          {/* Password */}
+          <div>
+            <input
+              type="password"
+              name="password"
+              id="user-password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
+            />
+          </div>
+
+          {/* Login Button */}
+          <div>
+            <button
+              type="submit"
+              className="w-full bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition font-semibold"
+            >
+              Log In
+            </button>
+          </div>
+        </form>
+
+        {/* Success/Error Message */}
+        {message && <p className="text-green-600 text-center mt-3">{message}</p>}
+
+        {/* Links */}
+        <div className="flex justify-between mt-4 text-sm text-gray-600">
+          <Link to="/signupseller" className="hover:underline text-gray-900">
+            Sign Up
+          </Link>
+        </div>
+      </div>
+    </div>
+  </>
   )
 }
 
